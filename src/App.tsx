@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { ItemSorter } from 'itemsorter';
+import './App.css';
 
 function App() {
     const mockData = [
@@ -39,8 +40,6 @@ function App() {
     { model: "Nothing Phone 2", brand: "Nothing", storage: 256, price: 649.99, OS: "Android" },
     { model: "Galaxy Z Flip 5", brand: "Samsung", storage: 256, price: 1049.99, OS: "Android" },
     { model: "iPhone SE 3", brand: "Apple", storage: 64, price: 429.99, OS: "iOS" },
-    { model: "Pixel Fold", brand: "Google", storage: 512, price: 1799.99, OS: "Android" },
-    { model: "Asus ROG Phone 7", brand: "Asus", storage: 1024, price: 1299.99, OS: "Android" }
   ];
   
   const mockSongs = [
@@ -107,11 +106,25 @@ const PhonesPage = ({ items, rangeFields, explicitFields, imageUrl }) => (
   const addEuro = (price:number) =>{
     return price + "€";
   }
+  
+  const addEmoji = (OS:string) =>{
+    if(OS === "Android"){
+      return OS + "🤖";
+    } else {
+      return OS + "🍏";
+    }
+  }
 
   const cardFunction = (item : any) => {
     console.log(item);
   }
 
+  function sendPlant(item) {
+    const encodedQuery = encodeURIComponent(item.species);
+    const url = `https://www.google.com/search?tbm=isch&q=${encodedQuery}`;
+    window.location.href = url;
+  }
+  
 
   // <ItemSorter 
   //   items={mockData}
@@ -140,13 +153,63 @@ const PhonesPage = ({ items, rangeFields, explicitFields, imageUrl }) => (
         <Routes>
             <Route path="/clothes" element={
                 <div className="p-4">
-                  <ItemSorter 
-                      items={mockData}
-                  />
+                <ItemSorter 
+                  items={mockData}
+                  // rangeFields={["price"]}
+                  // orderFields={{"size" : orderFunction}}
+                  // explicitFields = {["size", "price", "brand", "imgUrl"]}
+                  // imageUrl = "imgUrl"
+                  // textSearch = {true}
+                  // parseOutput = {{"price" : addEuro}}
+                  // cardFunction = {cardFunction}
+                  // sidebarClassName="sorter-custom-sidebar"
+                  // containerClassName="sorter-custom-container"
+                  // sectionClassName="sorter-custom-section"
+                  // inputClassName="sorter-custom-input"
+                  // gridClassName="sorter-custom-grid"
+                  // cardClassName="sorter-custom-card"
+                  // datapointClassName="sorter-custom-datapoint"
+                  // checkboxClassName="sorter-custom-checkbox"
+                  // gridThumbnailClassName="sorter-custom-grid-thumbnail"
+                />
                 </div>
               } />
-            <Route path="/plants" element={<PlantsPage items={mockPlants} rangeFields={["price", "height"]} explicitFields={["species", "height", "price", "careLevel"]} imageUrl={null} />} />
-            <Route path="/phones" element={<PhonesPage items={mockPhones} rangeFields={["price", "storage"]} explicitFields={["model", "brand", "price", "OS"]} imageUrl={null} />} />
+            <Route path="/plants" element={
+                  <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "100vw",
+                    maxWidth: "600px",
+                    margin: "0 auto",
+                    backgroundColor: "#cfffdc",
+                    borderRadius: "10px"
+                  }}>
+                    <h1 style={{display: "flex", justifyContent: "center"}}>Plants</h1>
+                    <p style={{display: "flex", justifyContent: "center", margin: "0 16px"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula vehicula magna, vel suscipit elit tincidunt a. Nam fermentum, orci non auctor fermentum, justo nulla facilisis sapien, et tristique lacus justo non tortor.</p>
+                  <ItemSorter 
+                    items={mockPlants}
+                    sidebarClassName="plant-custom-sidebar"
+                    containerClassName="plant-custom-container"
+                    cardClassName="plant-custom-card"
+                    checkboxClassName="plants-custom-checkbox"
+                    cardFunction = {sendPlant}
+                    // rangeFields={["price", "height"]}
+                  />            
+                  </div>
+              } />
+            <Route path="/phones" element={
+                  <ItemSorter 
+                    items={mockPhones}
+                    rangeFields={["storage", "price"]}
+                    // parseOutput={{"OS" : addEmoji}}
+                    sidebarClassName="phones-custom-sidebar"
+                    containerClassName="phones-custom-container"
+                    sectionClassName="phones-custom-section"
+                    gridClassName="phones-custom-grid"
+                    cardClassName="phones-custom-card"
+                    checkboxClassName="phones-custom-checkbox"
+                  />
+              } />
             <Route path="/" element={<div className="p-4">Select a category to explore.</div>} />
         </Routes>
     </Router>

@@ -1,5 +1,4 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -39,4 +38,167 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.plant-custom-sidebar {
+  background-color: #55b655;
+  padding: 24px;
+  border-right: 3px solid #0d6921;
+  max-height: 100vh;
+  overflow: scroll;
+  width: 400px;
+  position: fixed;
+  right: 0px;
+  top: 15px;
+  margin-right:15px;
+  border-radius:25px;
+}
+
+.plant-custom-container {
+  display: flex;
+  gap: 16px;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.plant-custom-card {
+  border: 4px solid green;
+  padding: 5px;
+}
+
+.plant-custom-card > * {
+  margin-bottom: 8px;
+}
+
+.plant-custom-card > *:last-child {
+  margin-bottom: 0;
+}
+
+.plant-custom-card:hover {
+  box-shadow: 0 4px 16px rgba(16, 107, 35, 0.1);
+}
+
+.phones-custom-container{
+    display: flex;
+    gap: 16px;
+    border-radius: 8px;
+    padding: 16px;
+    flex-direction: column-reverse;
+}
+
+.phones-custom-sidebar{
+  position:fixed;
+  bottom:0px;
+  left:0px;
+  display:flex;
+}
+.phones-custom-sidebar>h3{
+  display:none;
+}
+
+.phones-custom-section{
+  margin-left:35px;
+  margin-right:35px;
+}
+
+.phones-custom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  gap: 16px;
+  padding: 16px;
+}
+
+.phones-custom-grid > *:nth-of-type(odd) {
+  grid-row: 1;
+}
+
+.phones-custom-grid > *:nth-of-type(even) {
+  grid-row: 2;
+}
+
+.phones-custom-card {
+  font-family:monospace;
+  border: 4px solid rgb(58, 51, 43);
+  padding:1em;
+}
+
+
+.phones-custom-checkbox {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  border: 1px solid #f0f0f0;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.phones-custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.phones-custom-checkbox input:checked + span {
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+
+.phones-custom-checkbox span {
+  border-radius: 12px;
+  padding: 4px 8px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.phones-custom-checkbox:hover {
+  background-color: #ebebeb;
+}
+
+.phones-custom-checkbox input:checked + span:hover {
+  background-color: black;
+}
+
+
+.plants-custom-checkbox {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  border: 1px solid #f0f0f0;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.plants-custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.plants-custom-checkbox input:checked + span {
+  background-color: green;
+  color: white;
+  border-color: green;
+}
+
+.plants-custom-checkbox span {
+  border-radius: 12px;
+  padding: 4px 8px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.plants-custom-checkbox:hover {
+  background-color: #ebebeb;
+}
+
+.plants-custom-checkbox input:checked + span:hover {
+  background-color: green;
 }
